@@ -33,10 +33,8 @@ Siga os passos abaixo para executar o projeto localmente.
 ### Pré-requisitos
 
 * Python 3.8+
-* Conta no GitHub
 * pip (ou pip3)
-* Ambiente virtual (venv)
-* Python 3.8+
+* Ambiente virtual (venv) - recomendado
 
 ### Passos para Instalação
 
