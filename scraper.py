@@ -10,9 +10,6 @@ URL = 'https://books.toscrape.com/catalogue/'
 current_url = URL + 'page-1.html'
 books = []
 
-book_counter = 0
-BOOK_LIMIT = 5
-
 while URL:
     print(f"Scraping... {current_url}")
     
@@ -79,19 +76,6 @@ while URL:
         })
         
         time.sleep(random() * 0.1)
-
-    # Begin Debug
-        book_counter += 1
-        print(f"Livro {book_counter} de {BOOK_LIMIT} extraído: {title}")
-        if book_counter >= BOOK_LIMIT:
-            break
-
-        time.sleep(0.1)
-
-    if book_counter >= BOOK_LIMIT:
-        break
-
-    # End Debug
 
     # Paginação
     next_page_element = soup.find('li', class_='next')
