@@ -174,5 +174,5 @@ Lista todas as categorias de livros disponíveis.
 
 ## 🚀 Links da Entrega
 
-* **Link do Deploy:** `[Aguardando Deploy]`
-* **Link do Vídeo:** `[Aguardando Gravação]`
+* **Link do Deploy:** ``
+* **Link do Vídeo:** ``
