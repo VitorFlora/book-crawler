@@ -4,7 +4,7 @@ Este projeto é uma solução completa para o Tech Challenge, que consiste na cr
 
 ---
 
-## 🏛️ Diagrama da Arquitetura
+## Diagrama da Arquitetura
 
 O diagrama abaixo detalha o fluxo de dados do projeto, desde a ingestão (scraping) até o consumo pela API.
 
@@ -26,7 +26,7 @@ graph TD;
 
 ---
 
-## 🛠️ Como Reproduzir o Projeto
+## Como Reproduzir o Projeto
 
 Siga os passos abaixo para executar o projeto localmente.
 
@@ -75,7 +75,7 @@ O servidor estará disponível em `http://127.0.0.1:8000`.
 
 ---
 
-## 🗺️ Documentação dos Endpoints da API
+## Documentação dos Endpoints da API
 
 Abaixo estão os endpoints obrigatórios disponíveis. Você também pode acessar a documentação interativa (Swagger) gerada automaticamente pelo FastAPI em `http://127.0.0.1:8000/docs`.
 
@@ -168,9 +168,33 @@ Lista todas as categorias de livros disponíveis.
     }
     ```
 
----
+## Plano Arquitetural e Evolução
 
-## 🚀 Links da Entrega
+* **1. Arquitetura para Escalabilidade Futura**
+
+  A arquitetura atual é excelente para prototipagem e pronta para evoluir para um sistema em produção de larga escala, os seguintes passos seriam considerados:
+
+  Banco de Dados: Substituir o arquivo .csv por um banco de dados dedicado (ex: PostgreSQL ou MongoDB) para melhorar a performance de consultas e permitir escritas em tempo real.
+
+  Pipeline de ETL: Converter o scraper.py em um processo de ETL robusto, "containerizado" (com Docker) e orquestrado (com Airflow ou Prefect) para execuções agendadas e automáticas (com kubernets).
+
+  Cache: Implementar uma camada de cache (ex: Redis) para endpoints de alta demanda e dados pouco voláteis, como `/api/v1/categories`.
+
+* **2. Cenário de Uso para Cientistas de Dados (ML)**
+
+  A API serve como a principal fonte de dados para equipes de Data Science.
+
+  Análise Exploratória: Cientistas de dados podem consumir o endpoint `/api/v1/books` para carregar o dataset completo em um Jupyter Notebook (via Pandas DataFrame) e iniciar análises exploratórias.
+
+  Análise de Nicho: O endpoint `/api/v1/books/search` permite que a equipe de ML investigue segmentos específicos (categorias ou palavras-chave) sem a necessidade de baixar e filtrar o dataset inteiro.
+
+* **3. Plano de Integração com Modelos de ML**
+
+  **Fase 1 (Fonte de Treinamento):** O endpoint `/api/v1/books` atua como a fonte de dados para o script de treinamento de um modelo de recomendação (ex: filtro colaborativo ou baseado em conteúdo).
+
+  **Fase 2 (Servindo Predições):** No futuro, um modelo treinado pode ser carregado na própria API. Novos endpoints (como `/api/v1/ml/recommend?book_id=X`) seriam criados para servir predições em tempo real, sugerindo livros similares.
+
+## Links da Entrega
 
 * **Link do Deploy:** `https://book-crawler-mub1.onrender.com`
-* **Link do Vídeo:** ``
+* **Link do Vídeo:** `LINK-DO-VIDEO`

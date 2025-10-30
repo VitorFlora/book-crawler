@@ -9,7 +9,6 @@ app = FastAPI(
     version="1.0.0"
 )
 
-#Carregamento dos dados do CSV
 CSV_FILE_PATH = 'data/books.csv'
 
 try:
@@ -18,13 +17,17 @@ except FileNotFoundError:
     print(f"Erro: O arquivo '{CSV_FILE_PATH}' não foi encontrado. Execute o scraper primeiro.")
     df_books = pd.DataFrame()
 
-# Endpoints
 
+# Endpoints
 @app.get("/")
 def read_root():
     """Endpoint raiz que exibe uma mensagem de boas-vindas."""
-    return {"message": "Bem-vindo à API de Livros! Acesse /docs para ver a documentação interativa."}
-
+    return {"messages": [
+        "Bem-vindo à API de Livros! Acesse /docs para ver a documentação interativa.",
+        "Acesse /api/v1/books para ver a lista de livros.",
+        "Acesse /api/v1/categories para ver a lista de categorias.",
+        "Use /api/v1/books/search?title=nome&category=categoria para buscar livros por título e/ou categoria."
+    ]}
 
 @app.get("/api/v1/health")
 def health_check():
