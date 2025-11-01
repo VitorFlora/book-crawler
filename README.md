@@ -195,4 +195,4 @@ Lista todas as categorias de livros disponíveis.
 ## Links da Entrega
 
 * **Link do Deploy:** `https://book-crawler-mub1.onrender.com`
-* **Link do Vídeo:** `LINK-DO-VIDEO`
+* **Link do Vídeo:** `https://youtu.be/htSB0PjThzE`
