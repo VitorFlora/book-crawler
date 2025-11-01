@@ -22,8 +22,6 @@ graph TD;
     end
 ```
 
-*(Este bloco de código `mermaid` será renderizado automaticamente como um diagrama visual pelo GitHub.)*
-
 ---
 
 ## Como Reproduzir o Projeto
